@@ -1,0 +1,5 @@
+# Default owners for everything in the repo
+*                      @speccen/team-leads
+
+# Workflows can change what runs with write access
+/.github/              @speccen/team-leads
