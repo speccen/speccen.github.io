@@ -72,6 +72,7 @@
   --code-bg: #1B1530;
   --code-fg: #F3EFFA;
   --wash: #FBE4EC;
+  --edge: color-mix(in srgb, var(--rasp) 50%, var(--wash));
   --font: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --pad: clamp(1.25rem, 5vw, 3rem);
@@ -91,7 +92,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 5rem; }
 body {
   margin: 0;
   background: var(--paper);
@@ -112,6 +113,7 @@ a:hover { text-decoration-thickness: 2px; }
 span.brand { font-weight: 700; font-style: italic; }
 
 /* header */
+.topbar { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--paper) 70%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--edge); }
 .top { display: flex; align-items: center; justify-content: space-between; padding-block: 1.25rem; }
 .top .logo { display: block; height: 2.25rem; width: auto; color: var(--ink); }
 .top nav { display: flex; gap: 1.5rem; font-weight: 500; }
@@ -194,7 +196,7 @@ span.brand { font-weight: 700; font-style: italic; }
 .split { display: grid; gap: 1.5rem clamp(2rem, 6vw, 5rem); grid-template-columns: 1fr; }
 @media (min-width: 56rem) { .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); } }
 .split > *, .installs > *, .twocol > * { min-width: 0; }
-.section h2 { margin: 0; font-size: clamp(1.6rem, 3.6vw, 2.3rem); font-weight: 750; line-height: 1.12; letter-spacing: -0.015em; }
+.section h2 { margin: 0; font-size: clamp(1.6rem, 3.6vw, 2.3rem); font-weight: 750; line-height: 1.12; letter-spacing: -0.015em; color: color-mix(in srgb, var(--muted) 60%, var(--paper)); }
 .section p { margin: 0 0 1.1rem; max-width: 40rem; }
 .section p:last-child { margin-bottom: 0; }
 .muted { color: var(--muted); }
@@ -221,7 +223,7 @@ span.brand { font-weight: 700; font-style: italic; }
 /* footer */
 
 /* the dictionary entry, as a closing hero */
-.word { background: var(--wash); color: var(--ink); padding-block: clamp(2.5rem, 7vw, 4.5rem); overflow: hidden; }
+.word { background: var(--wash); color: var(--ink); padding-block: clamp(2.5rem, 7vw, 4.5rem); overflow: hidden; border-bottom: 1px solid var(--edge); }
 .word .container { display: grid; align-items: center; gap: 2.5rem clamp(2rem, 6vw, 5rem); grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 52rem) { .word .container { grid-template-columns: minmax(0, 1fr) auto; } }
 .entry { margin: 0; }
@@ -234,7 +236,7 @@ span.brand { font-weight: 700; font-style: italic; }
 .word .sweet { width: clamp(7rem, 18vw, 14rem); height: auto; display: block; }
 @media (max-width: 51.99rem) { .word .sweet { width: 6.5rem; order: -1; } }
 
-footer { padding-block: 3rem; background: var(--wash); }
+footer { padding-block: 3rem; background: var(--wash); border-top: 1px solid var(--edge); }
 footer .container { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1.5rem; }
 .foot-links { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin: 0; padding: 0; list-style: none; }
 .small { font-size: .9rem; color: var(--muted); }
@@ -258,6 +260,7 @@ footer .container { display: flex; flex-wrap: wrap; align-items: baseline; justi
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
+<div class="topbar">
 <div class="container">
   <header class="top">
     <a href="./" aria-label="speccen, home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 518 120" class="logo" aria-hidden="true" focusable="false"><g transform="translate(0 0) scale(1)"><path d="M34 60 L6 38 V82 Z" fill="#C92A5E"/><path d="M86 60 L114 38 V82 Z" fill="#C92A5E"/><rect x="28" y="34" width="64" height="52" rx="26" fill="#C92A5E"/><path d="M46 51 H74 M46 60 H66 M46 69 H56" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" fill="none"/></g><path transform="translate(136 88.0)" d="M26.50 1.34Q21.41 1.34 17.28 0.38Q13.15 -0.58 10.18 -2.40Q7.20 -4.22 5.38 -6.77Q3.55 -9.31 2.98 -12.48L13.54 -16.80Q13.92 -14.69 15.65 -12.86Q17.38 -11.04 20.30 -9.94Q23.23 -8.83 27.36 -8.83Q31.78 -8.83 34.18 -10.13Q36.58 -11.42 36.58 -13.82Q36.58 -15.65 35.23 -16.70Q33.89 -17.76 31.30 -18.53Q28.70 -19.30 25.06 -19.97Q21.50 -20.83 17.81 -21.79Q14.11 -22.75 10.99 -24.48Q7.87 -26.21 5.90 -29.04Q3.94 -31.87 3.94 -36.29Q3.94 -40.90 6.43 -44.35Q8.93 -47.81 13.73 -49.78Q18.53 -51.74 25.44 -51.74Q31.68 -51.74 36.38 -50.06Q41.09 -48.38 44.11 -45.26Q47.14 -42.14 48.19 -37.82L36.96 -34.08Q36.58 -36.38 35.09 -38.11Q33.60 -39.84 31.15 -40.70Q28.70 -41.57 25.44 -41.57Q21.31 -41.57 19.06 -40.22Q16.80 -38.88 16.80 -36.67Q16.80 -34.85 18.29 -33.70Q19.78 -32.54 22.46 -31.82Q25.15 -31.10 28.80 -30.34Q32.64 -29.57 36.29 -28.56Q39.94 -27.55 42.86 -25.92Q45.79 -24.29 47.52 -21.60Q49.25 -18.91 49.25 -14.69Q49.25 -9.70 46.56 -6.10Q43.87 -2.50 38.78 -0.58Q33.70 1.34 26.50 1.34Z M55.20 16.13V-50.40H66.62L66.72 -36.38L68.45 -36.29Q69.31 -41.38 71.47 -44.83Q73.63 -48.29 77.09 -50.02Q80.54 -51.74 85.06 -51.74Q91.78 -51.74 96.58 -48.43Q101.38 -45.12 103.92 -39.12Q106.46 -33.12 106.46 -24.96Q106.46 -17.38 104.16 -11.47Q101.86 -5.57 97.30 -2.11Q92.74 1.34 85.92 1.34Q81.12 1.34 77.81 -0.48Q74.50 -2.30 72.34 -5.62Q70.18 -8.93 68.74 -13.54H66.91Q67.49 -10.94 67.97 -8.26Q68.45 -5.57 68.74 -3.02Q69.02 -0.48 69.02 1.92V16.13ZM81.12 -9.70Q84.58 -9.70 86.98 -11.62Q89.38 -13.54 90.67 -16.99Q91.97 -20.45 91.97 -24.86Q91.97 -29.66 90.62 -33.07Q89.28 -36.48 86.78 -38.40Q84.29 -40.32 80.83 -40.32Q77.76 -40.32 75.55 -38.98Q73.34 -37.63 71.86 -35.42Q70.37 -33.22 69.70 -30.67Q69.02 -28.13 69.02 -25.82V-24.00Q69.02 -22.18 69.50 -20.21Q69.98 -18.24 71.04 -16.37Q72.10 -14.50 73.54 -13.01Q74.98 -11.52 76.90 -10.61Q78.82 -9.70 81.12 -9.70Z M136.51 1.34Q130.27 1.34 125.42 -0.38Q120.58 -2.11 117.22 -5.38Q113.86 -8.64 112.08 -13.44Q110.30 -18.24 110.30 -24.29Q110.30 -30.24 111.98 -35.28Q113.66 -40.32 116.93 -44.02Q120.19 -47.71 124.90 -49.73Q129.60 -51.74 135.55 -51.74Q141.31 -51.74 145.82 -49.87Q150.34 -48.00 153.36 -44.26Q156.38 -40.51 157.78 -35.09Q159.17 -29.66 158.78 -22.66L123.55 -22.27Q123.94 -15.84 127.10 -12.58Q130.66 -8.74 136.51 -8.74Q139.20 -8.74 141.07 -9.46Q142.94 -10.18 144.14 -11.33Q145.34 -12.48 146.06 -13.92Q146.78 -15.36 147.26 -16.80L159.26 -14.21Q158.40 -10.66 156.72 -7.82Q155.04 -4.99 152.26 -2.93Q149.47 -0.86 145.58 0.24Q141.70 1.34 136.51 1.34ZM123.94 -29.86 146.11 -30.14Q146.02 -32.74 145.25 -34.66Q143.90 -37.92 141.36 -39.46Q138.82 -40.99 135.74 -40.99Q132.10 -40.99 129.31 -39.07Q126.53 -37.15 124.99 -33.50Q124.32 -31.78 123.94 -29.86Z M188.83 1.34Q182.30 1.34 177.41 -0.58Q172.51 -2.50 169.25 -5.95Q165.98 -9.41 164.35 -14.16Q162.72 -18.91 162.72 -24.58Q162.72 -30.53 164.40 -35.47Q166.08 -40.42 169.34 -44.06Q172.61 -47.71 177.41 -49.73Q182.21 -51.74 188.35 -51.74Q194.50 -51.74 199.06 -49.73Q203.62 -47.71 206.45 -44.11Q209.28 -40.51 210.34 -35.62L197.57 -31.49Q197.28 -34.46 195.98 -36.62Q194.69 -38.78 192.53 -39.89Q190.37 -40.99 187.68 -40.99Q184.90 -40.99 182.88 -39.89Q180.86 -38.78 179.47 -36.72Q178.08 -34.66 177.36 -31.73Q176.64 -28.80 176.64 -25.15Q176.64 -19.97 178.03 -16.37Q179.42 -12.77 182.16 -10.90Q184.90 -9.02 188.93 -9.02Q192.77 -9.02 195.07 -10.51Q197.38 -12.00 198.48 -14.35Q199.58 -16.70 199.87 -19.20L211.97 -16.51Q211.49 -12.77 209.90 -9.50Q208.32 -6.24 205.44 -3.84Q202.56 -1.44 198.48 -0.05Q194.40 1.34 188.83 1.34Z M239.81 1.34Q233.28 1.34 228.38 -0.58Q223.49 -2.50 220.22 -5.95Q216.96 -9.41 215.33 -14.16Q213.70 -18.91 213.70 -24.58Q213.70 -30.53 215.38 -35.47Q217.06 -40.42 220.32 -44.06Q223.58 -47.71 228.38 -49.73Q233.18 -51.74 239.33 -51.74Q245.47 -51.74 250.03 -49.73Q254.59 -47.71 257.42 -44.11Q260.26 -40.51 261.31 -35.62L248.54 -31.49Q248.26 -34.46 246.96 -36.62Q245.66 -38.78 243.50 -39.89Q241.34 -40.99 238.66 -40.99Q235.87 -40.99 233.86 -39.89Q231.84 -38.78 230.45 -36.72Q229.06 -34.66 228.34 -31.73Q227.62 -28.80 227.62 -25.15Q227.62 -19.97 229.01 -16.37Q230.40 -12.77 233.14 -10.90Q235.87 -9.02 239.90 -9.02Q243.74 -9.02 246.05 -10.51Q248.35 -12.00 249.46 -14.35Q250.56 -16.70 250.85 -19.20L262.94 -16.51Q262.46 -12.77 260.88 -9.50Q259.30 -6.24 256.42 -3.84Q253.54 -1.44 249.46 -0.05Q245.38 1.34 239.81 1.34Z M290.88 1.34Q284.64 1.34 279.79 -0.38Q274.94 -2.11 271.58 -5.38Q268.22 -8.64 266.45 -13.44Q264.67 -18.24 264.67 -24.29Q264.67 -30.24 266.35 -35.28Q268.03 -40.32 271.30 -44.02Q274.56 -47.71 279.26 -49.73Q283.97 -51.74 289.92 -51.74Q295.68 -51.74 300.19 -49.87Q304.70 -48.00 307.73 -44.26Q310.75 -40.51 312.14 -35.09Q313.54 -29.66 313.15 -22.66L277.92 -22.27Q278.30 -15.84 281.47 -12.58Q285.02 -8.74 290.88 -8.74Q293.57 -8.74 295.44 -9.46Q297.31 -10.18 298.51 -11.33Q299.71 -12.48 300.43 -13.92Q301.15 -15.36 301.63 -16.80L313.63 -14.21Q312.77 -10.66 311.09 -7.82Q309.41 -4.99 306.62 -2.93Q303.84 -0.86 299.95 0.24Q296.06 1.34 290.88 1.34ZM278.30 -29.86 300.48 -30.14Q300.38 -32.74 299.62 -34.66Q298.27 -37.92 295.73 -39.46Q293.18 -40.99 290.11 -40.99Q286.46 -40.99 283.68 -39.07Q280.90 -37.15 279.36 -33.50Q278.69 -31.78 278.30 -29.86Z M319.87 0.00V-50.40H331.20L331.10 -35.33H333.02Q334.27 -40.80 336.58 -44.45Q338.88 -48.10 342.38 -49.92Q345.89 -51.74 350.69 -51.74Q359.42 -51.74 363.98 -45.60Q368.54 -39.46 368.54 -26.30V0.00H354.62V-24.77Q354.62 -32.83 352.27 -36.53Q349.92 -40.22 345.41 -40.22Q341.57 -40.22 338.98 -37.82Q336.38 -35.42 335.09 -31.54Q333.79 -27.65 333.70 -22.85V0.00Z" fill="currentColor"/></svg>
@@ -267,6 +270,7 @@ footer .container { display: flex; flex-wrap: wrap; align-items: baseline; justi
       <a href="https://github.com/speccen/speccen-ai-toolkit">GitHub</a>
     </nav>
   </header>
+</div>
 </div>
 
 <main id="main">
