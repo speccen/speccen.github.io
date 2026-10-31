@@ -469,6 +469,17 @@ copilot plugin install speccen@speccen-ai-toolkit</code></pre></div>
     });
     box.appendChild(btn);
   });
+
+  var home = document.querySelector('header a[href="./"]');
+  if (home) {
+    home.addEventListener("click", function (e) {
+      var p = location.pathname;
+      if (p !== "/" && !/\/index\.html$/.test(p)) return;
+      e.preventDefault();
+      window.scrollTo({ top: 0 });
+      history.replaceState(null, "", p);
+    });
+  }
 })();
 </script>
 </body>
