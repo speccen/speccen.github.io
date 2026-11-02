@@ -71,7 +71,7 @@
             <span class="gate">You approve it or ask for revisions</span>
           </li>
         </ol>
-        <p style="margin-top:1.5rem">Output goes to <code>.speccen/documentation/&lt;id&gt;/</code>. The authored source and deliverable is <code>&lt;NAME&gt;_DOCUMENTATION.html</code>. Next to it, <code>&lt;NAME&gt;_DOCUMENTATION.md</code> holds the workflow state and prompt log, and becomes a reduced Markdown copy after generation. Run it again for the same feature and it resumes from that state. At each phase transition it commits to git when git is configured.</p>
+        <p style="margin-top:1.5rem">Output goes to <code>.speccen/documentation/&lt;id&gt;/</code>, where <code>&lt;id&gt;</code> is <code>YYYY-MM-DD.&lt;name_snake_case&gt;</code>. The authored source and deliverable is <code>&lt;name&gt;_documentation.html</code>. Next to it, <code>&lt;name&gt;_documentation.md</code> holds the workflow state and prompt log, and becomes a reduced Markdown copy after generation. Run it again for the same feature and it resumes from that state. At each phase transition it commits to git when git is configured.</p>
       </div>
     </div>
   </section>
@@ -81,13 +81,13 @@
       <h2>Code review</h2>
       <div>
         <div class="code has-copy"><pre><code>/speccen:code-review</code></pre></div>
-        <p>It asks for the feature or refactoring name, finds a matching <code>ANALYSIS</code> document if there is one, and reviews the current state of the code. It does not care who wrote it.</p>
+        <p>It asks for the feature or refactoring name, finds a matching <code>&lt;name&gt;_analysis.md</code> document if there is one, and reviews the current state of the code. It does not care who wrote it.</p>
         <ul class="plain">
-          <li>With an <code>ANALYSIS</code> document or a speccen bundle, the code is checked against that blueprint.</li>
+          <li>With an analysis document or a speccen bundle, the code is checked against that blueprint.</li>
           <li>Without one, it reviews against your project conventions, security basics and code quality.</li>
           <li>It reads the git changes since implementation started and reports a structured Review Report.</li>
         </ul>
-        <p>Reports are saved as <code>.speccen/reviews/&lt;id&gt;/&lt;NAME&gt;_REVIEW_&lt;timestamp&gt;.md</code>. Repeat reviews of the same feature accumulate in one folder, told apart by the timestamp.</p>
+        <p>Reports are saved as <code>.speccen/reviews/&lt;id&gt;/&lt;name&gt;_review_&lt;YYYYMMDD_HHMMSS&gt;.md</code>. Repeat reviews of the same feature accumulate in one folder, told apart by the timestamp.</p>
         <p>Afterwards it offers to turn the findings into GitHub Issues. Nothing is created until you have seen a confirmation summary and agreed. It uses the <code>gh</code> CLI.</p>
         <p class="note">Claude Code also has a built-in <code>/code-review</code>. This one is <code>speccen:code-review</code>. Type <code>speccen</code> in the command picker to pick the right one.</p>
       </div>

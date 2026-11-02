@@ -148,14 +148,18 @@
         <div class="code"><pre><code>.speccen/audits/&lt;id&gt;/
   index.md        regenerable listing
   STATE.md        where the run is now
+  log.md          prompts and stage timeline
   recon.md        the orientation pass
+  run.json        run stamp: date, commit, rubric hash
   scorecard.md    the four signals, machine-written
+  summary.json    the same aggregate, machine-readable
   trend.md        against the previous run and the baseline
+  trend-notes.md  evidence for each level change (not on the baseline)
   dimensions/     one folder per dimension
     &lt;name&gt;/       result.json, detail.md, summary.md
   docs/           doc-executive.md, doc-business.md, doc-technical.md</code></pre></div>
         <p>The scorecard carries four signals: the weighted average, the readiness gate, modernization pressure and the cost-of-ownership signature. A script computes them. The AI never hand-computes a score signal.</p>
-        <p>A scoreboard of all runs sits in <code>.speccen/audits/history.md</code>. Keep the audits in git: the trend only means something when earlier runs are there.</p>
+        <p>A scoreboard of all runs sits in <code>.speccen/audits/history.md</code>, with <code>history.json</code> beside it. Keep the audits in git: the trend only means something when earlier runs are there.</p>
       </div>
     </div>
   </section>
