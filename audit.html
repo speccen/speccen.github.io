@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>speccen audit: score a codebase's production maturity</title>
+<meta name="description" content="Run /speccen:audit to score a codebase on eleven engineering dimensions, review the scores at a gate, then get executive, business and technical documents.">
+<meta name="theme-color" content="#C92A5E">
+<link rel="canonical" href="https://speccen.dev/audit.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="speccen audit">
+<meta property="og:description" content="Run /speccen:audit to score a codebase on eleven engineering dimensions, review the scores at a gate, then get executive, business and technical documents.">
+<meta property="og:url" content="https://speccen.dev/audit.html">
+<meta property="og:site_name" content="speccen">
+<meta property="og:image" content="https://speccen.dev/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="speccen audit">
+<meta name="twitter:description" content="Run /speccen:audit to score a codebase on eleven engineering dimensions, review the scores at a gate, then get executive, business and technical documents.">
+<meta name="twitter:image" content="https://speccen.dev/assets/og-image.png">
+<link rel="apple-touch-icon" href="assets/app-icon-512.png">
+<link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="topbar">
+<div class="container">
+  <header class="top">
+    <a href="./" aria-label="speccen, home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 518 120" class="logo" aria-hidden="true" focusable="false"><g transform="translate(0 0) scale(1)"><path d="M34 60 L6 38 V82 Z" fill="#C92A5E"/><path d="M86 60 L114 38 V82 Z" fill="#C92A5E"/><rect x="28" y="34" width="64" height="52" rx="26" fill="#C92A5E"/><path d="M46 51 H74 M46 60 H66 M46 69 H56" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" fill="none"/></g><path transform="translate(136 88.0)" d="M26.50 1.34Q21.41 1.34 17.28 0.38Q13.15 -0.58 10.18 -2.40Q7.20 -4.22 5.38 -6.77Q3.55 -9.31 2.98 -12.48L13.54 -16.80Q13.92 -14.69 15.65 -12.86Q17.38 -11.04 20.30 -9.94Q23.23 -8.83 27.36 -8.83Q31.78 -8.83 34.18 -10.13Q36.58 -11.42 36.58 -13.82Q36.58 -15.65 35.23 -16.70Q33.89 -17.76 31.30 -18.53Q28.70 -19.30 25.06 -19.97Q21.50 -20.83 17.81 -21.79Q14.11 -22.75 10.99 -24.48Q7.87 -26.21 5.90 -29.04Q3.94 -31.87 3.94 -36.29Q3.94 -40.90 6.43 -44.35Q8.93 -47.81 13.73 -49.78Q18.53 -51.74 25.44 -51.74Q31.68 -51.74 36.38 -50.06Q41.09 -48.38 44.11 -45.26Q47.14 -42.14 48.19 -37.82L36.96 -34.08Q36.58 -36.38 35.09 -38.11Q33.60 -39.84 31.15 -40.70Q28.70 -41.57 25.44 -41.57Q21.31 -41.57 19.06 -40.22Q16.80 -38.88 16.80 -36.67Q16.80 -34.85 18.29 -33.70Q19.78 -32.54 22.46 -31.82Q25.15 -31.10 28.80 -30.34Q32.64 -29.57 36.29 -28.56Q39.94 -27.55 42.86 -25.92Q45.79 -24.29 47.52 -21.60Q49.25 -18.91 49.25 -14.69Q49.25 -9.70 46.56 -6.10Q43.87 -2.50 38.78 -0.58Q33.70 1.34 26.50 1.34Z M55.20 16.13V-50.40H66.62L66.72 -36.38L68.45 -36.29Q69.31 -41.38 71.47 -44.83Q73.63 -48.29 77.09 -50.02Q80.54 -51.74 85.06 -51.74Q91.78 -51.74 96.58 -48.43Q101.38 -45.12 103.92 -39.12Q106.46 -33.12 106.46 -24.96Q106.46 -17.38 104.16 -11.47Q101.86 -5.57 97.30 -2.11Q92.74 1.34 85.92 1.34Q81.12 1.34 77.81 -0.48Q74.50 -2.30 72.34 -5.62Q70.18 -8.93 68.74 -13.54H66.91Q67.49 -10.94 67.97 -8.26Q68.45 -5.57 68.74 -3.02Q69.02 -0.48 69.02 1.92V16.13ZM81.12 -9.70Q84.58 -9.70 86.98 -11.62Q89.38 -13.54 90.67 -16.99Q91.97 -20.45 91.97 -24.86Q91.97 -29.66 90.62 -33.07Q89.28 -36.48 86.78 -38.40Q84.29 -40.32 80.83 -40.32Q77.76 -40.32 75.55 -38.98Q73.34 -37.63 71.86 -35.42Q70.37 -33.22 69.70 -30.67Q69.02 -28.13 69.02 -25.82V-24.00Q69.02 -22.18 69.50 -20.21Q69.98 -18.24 71.04 -16.37Q72.10 -14.50 73.54 -13.01Q74.98 -11.52 76.90 -10.61Q78.82 -9.70 81.12 -9.70Z M136.51 1.34Q130.27 1.34 125.42 -0.38Q120.58 -2.11 117.22 -5.38Q113.86 -8.64 112.08 -13.44Q110.30 -18.24 110.30 -24.29Q110.30 -30.24 111.98 -35.28Q113.66 -40.32 116.93 -44.02Q120.19 -47.71 124.90 -49.73Q129.60 -51.74 135.55 -51.74Q141.31 -51.74 145.82 -49.87Q150.34 -48.00 153.36 -44.26Q156.38 -40.51 157.78 -35.09Q159.17 -29.66 158.78 -22.66L123.55 -22.27Q123.94 -15.84 127.10 -12.58Q130.66 -8.74 136.51 -8.74Q139.20 -8.74 141.07 -9.46Q142.94 -10.18 144.14 -11.33Q145.34 -12.48 146.06 -13.92Q146.78 -15.36 147.26 -16.80L159.26 -14.21Q158.40 -10.66 156.72 -7.82Q155.04 -4.99 152.26 -2.93Q149.47 -0.86 145.58 0.24Q141.70 1.34 136.51 1.34ZM123.94 -29.86 146.11 -30.14Q146.02 -32.74 145.25 -34.66Q143.90 -37.92 141.36 -39.46Q138.82 -40.99 135.74 -40.99Q132.10 -40.99 129.31 -39.07Q126.53 -37.15 124.99 -33.50Q124.32 -31.78 123.94 -29.86Z M188.83 1.34Q182.30 1.34 177.41 -0.58Q172.51 -2.50 169.25 -5.95Q165.98 -9.41 164.35 -14.16Q162.72 -18.91 162.72 -24.58Q162.72 -30.53 164.40 -35.47Q166.08 -40.42 169.34 -44.06Q172.61 -47.71 177.41 -49.73Q182.21 -51.74 188.35 -51.74Q194.50 -51.74 199.06 -49.73Q203.62 -47.71 206.45 -44.11Q209.28 -40.51 210.34 -35.62L197.57 -31.49Q197.28 -34.46 195.98 -36.62Q194.69 -38.78 192.53 -39.89Q190.37 -40.99 187.68 -40.99Q184.90 -40.99 182.88 -39.89Q180.86 -38.78 179.47 -36.72Q178.08 -34.66 177.36 -31.73Q176.64 -28.80 176.64 -25.15Q176.64 -19.97 178.03 -16.37Q179.42 -12.77 182.16 -10.90Q184.90 -9.02 188.93 -9.02Q192.77 -9.02 195.07 -10.51Q197.38 -12.00 198.48 -14.35Q199.58 -16.70 199.87 -19.20L211.97 -16.51Q211.49 -12.77 209.90 -9.50Q208.32 -6.24 205.44 -3.84Q202.56 -1.44 198.48 -0.05Q194.40 1.34 188.83 1.34Z M239.81 1.34Q233.28 1.34 228.38 -0.58Q223.49 -2.50 220.22 -5.95Q216.96 -9.41 215.33 -14.16Q213.70 -18.91 213.70 -24.58Q213.70 -30.53 215.38 -35.47Q217.06 -40.42 220.32 -44.06Q223.58 -47.71 228.38 -49.73Q233.18 -51.74 239.33 -51.74Q245.47 -51.74 250.03 -49.73Q254.59 -47.71 257.42 -44.11Q260.26 -40.51 261.31 -35.62L248.54 -31.49Q248.26 -34.46 246.96 -36.62Q245.66 -38.78 243.50 -39.89Q241.34 -40.99 238.66 -40.99Q235.87 -40.99 233.86 -39.89Q231.84 -38.78 230.45 -36.72Q229.06 -34.66 228.34 -31.73Q227.62 -28.80 227.62 -25.15Q227.62 -19.97 229.01 -16.37Q230.40 -12.77 233.14 -10.90Q235.87 -9.02 239.90 -9.02Q243.74 -9.02 246.05 -10.51Q248.35 -12.00 249.46 -14.35Q250.56 -16.70 250.85 -19.20L262.94 -16.51Q262.46 -12.77 260.88 -9.50Q259.30 -6.24 256.42 -3.84Q253.54 -1.44 249.46 -0.05Q245.38 1.34 239.81 1.34Z M290.88 1.34Q284.64 1.34 279.79 -0.38Q274.94 -2.11 271.58 -5.38Q268.22 -8.64 266.45 -13.44Q264.67 -18.24 264.67 -24.29Q264.67 -30.24 266.35 -35.28Q268.03 -40.32 271.30 -44.02Q274.56 -47.71 279.26 -49.73Q283.97 -51.74 289.92 -51.74Q295.68 -51.74 300.19 -49.87Q304.70 -48.00 307.73 -44.26Q310.75 -40.51 312.14 -35.09Q313.54 -29.66 313.15 -22.66L277.92 -22.27Q278.30 -15.84 281.47 -12.58Q285.02 -8.74 290.88 -8.74Q293.57 -8.74 295.44 -9.46Q297.31 -10.18 298.51 -11.33Q299.71 -12.48 300.43 -13.92Q301.15 -15.36 301.63 -16.80L313.63 -14.21Q312.77 -10.66 311.09 -7.82Q309.41 -4.99 306.62 -2.93Q303.84 -0.86 299.95 0.24Q296.06 1.34 290.88 1.34ZM278.30 -29.86 300.48 -30.14Q300.38 -32.74 299.62 -34.66Q298.27 -37.92 295.73 -39.46Q293.18 -40.99 290.11 -40.99Q286.46 -40.99 283.68 -39.07Q280.90 -37.15 279.36 -33.50Q278.69 -31.78 278.30 -29.86Z M319.87 0.00V-50.40H331.20L331.10 -35.33H333.02Q334.27 -40.80 336.58 -44.45Q338.88 -48.10 342.38 -49.92Q345.89 -51.74 350.69 -51.74Q359.42 -51.74 363.98 -45.60Q368.54 -39.46 368.54 -26.30V0.00H354.62V-24.77Q354.62 -32.83 352.27 -36.53Q349.92 -40.22 345.41 -40.22Q341.57 -40.22 338.98 -37.82Q336.38 -35.42 335.09 -31.54Q333.79 -27.65 333.70 -22.85V0.00Z" fill="currentColor"/></svg></a>
+    <nav aria-label="Primary">
+      <a aria-current="page" href="audit.html">Audit</a>
+      <a href="code.html">Code</a>
+      <a href="./#install">Install</a>
+      <a href="https://github.com/speccen/speccen-ai-toolkit">GitHub</a>
+    </nav>
+  </header>
+</div>
+</div>
+
+<main id="main">
+  <section class="hero container">
+    <p class="kicker">Maturity audit</p>
+    <h1>Know where the codebase stands</h1>
+    <p class="lead">One command scores a codebase on eleven engineering dimensions, stops for your review, and only then writes the documents for your executive, business and technical readers. It is a separate workflow from the six phases, and it never changes code.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#run">Run an audit</a>
+      <a class="btn btn-quiet" href="https://github.com/speccen/speccen-ai-toolkit/tree/main/skills/audit">Read the skills</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <h2>Two questions, kept apart</h2>
+      <div>
+        <div class="cards">
+          <div>
+            <h3>Can you keep running this as-is?</h3>
+            <p>The production-readiness gate. It is the lowest level among the critical dimensions: security, testing and reliability.</p>
+          </div>
+          <div>
+            <h3>How much is it holding you back?</h3>
+            <p>Modernization pressure and a relative cost-of-ownership signature, driven by the legacy cluster. Adaptability weighs the most.</p>
+          </div>
+        </div>
+        <p style="margin-top:1.75rem">Use it for a production readiness review, a tech debt assessment, a legacy modernization decision, or a plain "is this ready to ship or scale" check. The audit is static by default: it reads the code and does not run it. Every level cites the file paths that justify it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="run">
+    <div class="container split">
+      <h2>Run it</h2>
+      <div>
+        <div class="code has-copy"><pre><code>/speccen:audit</code></pre></div>
+        <p>The application name comes from the repository. To name it yourself, pass it as an argument:</p>
+        <div class="code has-copy"><pre><code>/speccen:audit 'my-app'</code></pre></div>
+        <p>You never pick an output path. Each run gets a folder in <code>.speccen/audits/</code>. The first run of a codebase is the baseline, <code>YYYY-MM-DD.baseline</code>. Every later run is compared with the previous run and the baseline. To resume an audit, run the command again and pick the run from the list.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <h2>Four stages, one gate</h2>
+      <div>
+        <ol class="steps">
+          <li>
+            <h3>Recon</h3>
+            <p>Scaffolds the run and orients on the codebase. It records a system profile: composition, tiers, topology, coupling and data architecture. The profile calibrates the rubrics. It is not scored.</p>
+          </li>
+          <li>
+            <h3>Scoring</h3>
+            <p>Each dimension is scored 0 to 4 against its rubric, with evidence. Every dimension gets a <code>result.json</code>, a full <code>detail.md</code> and a bounded <code>summary.md</code>.</p>
+          </li>
+          <li>
+            <h3>Review</h3>
+            <p>A script computes the scorecard and the trend against earlier runs. The audit then stops with the status <code>AWAITING ARCHITECT REVIEW</code>. Correct any level you disagree with. The scorecard is recomputed, never hand-edited. Say "generate the documents" to release the next stage.</p>
+            <span class="gate">Nothing is written for your readers before this go</span>
+          </li>
+          <li>
+            <h3>Synthesis</h3>
+            <p>Writes three audience documents from the reviewed scores: executive, business and technical.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <h2>Eleven dimensions, five levels</h2>
+      <div>
+        <ul class="dims" aria-label="Dimensions">
+          <li class="crit">Security</li>
+          <li class="crit">Testing</li>
+          <li class="crit">Reliability</li>
+          <li>Performance and scalability</li>
+          <li>Adaptability</li>
+          <li>CI/CD and deployment</li>
+          <li>Observability</li>
+          <li>Dependency health</li>
+          <li>Code quality</li>
+          <li>Architecture</li>
+          <li>Documentation</li>
+        </ul>
+        <p class="muted">Outlined in rose: the critical dimensions behind the readiness gate.</p>
+        <ul class="levels" aria-label="Maturity levels">
+          <li><b>0</b>Absent. Not present at all.</li>
+          <li><b>1</b>Initial. Ad hoc, inconsistent, undocumented.</li>
+          <li><b>2</b>Emerging. A basic version exists, with real gaps.</li>
+          <li><b>3</b>Established. Consistent, documented, covers the common cases.</li>
+          <li><b>4</b>Optimized. Comprehensive, automated, monitored, improved.</li>
+        </ul>
+        <p>A dimension sits at the highest level whose criteria are substantially met. The criteria it misses become findings and recommendations.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <h2>What you get</h2>
+      <div>
+        <div class="code"><pre><code>.speccen/audits/&lt;id&gt;/
+  index.md        regenerable listing
+  STATE.md        where the run is now
+  recon.md        the orientation pass
+  scorecard.md    the four signals, machine-written
+  trend.md        against the previous run and the baseline
+  dimensions/     one folder per dimension
+    &lt;name&gt;/       result.json, detail.md, summary.md
+  docs/           doc-executive.md, doc-business.md, doc-technical.md</code></pre></div>
+        <p>The scorecard carries four signals: the weighted average, the readiness gate, modernization pressure and the cost-of-ownership signature. A script computes them. The AI never hand-computes a score signal.</p>
+        <p>A scoreboard of all runs sits in <code>.speccen/audits/history.md</code>. Keep the audits in git: the trend only means something when earlier runs are there.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <ul class="foot-links">
+      <li><a href="./">Home</a></li>
+      <li><a href="https://github.com/speccen/speccen-ai-toolkit">GitHub</a></li>
+      <li><a href="https://github.com/speccen/speccen-ai-toolkit/blob/main/README.md">README</a></li>
+      <li><a href="https://github.com/speccen/speccen-ai-toolkit/blob/main/ARCHITECTURE.md">Architecture</a></li>
+      <li><a href="https://github.com/speccen/speccen-ai-toolkit/blob/main/LICENSE">MIT licence</a></li>
+    </ul>
+    <div class="small">
+      <p>Set in Bricolage Grotesque, used under the <a href="assets/fonts/FONT-LICENSE-OFL.txt">SIL Open Font License</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  Array.prototype.forEach.call(document.querySelectorAll(".code.has-copy"), function (box) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "copy";
+    btn.textContent = "Copy";
+    btn.addEventListener("click", function () {
+      var code = box.querySelector("code").innerText;
+      var done = function () {
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = "Copy"; }, 1600);
+      };
+      try {
+        navigator.clipboard.writeText(code).then(done, function () { btn.textContent = "Select and copy"; });
+      } catch (e) { btn.textContent = "Select and copy"; }
+    });
+    box.appendChild(btn);
+  });
+})();
+</script>
+</body>
+</html>
